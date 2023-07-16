@@ -3,8 +3,12 @@ import './Navbar.scss';
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
-  )
+    <nav>
+      <div>
+        <img src={images}/>
+      </div>
+    </nav>
+    )
 }
 
 export default Navbar
