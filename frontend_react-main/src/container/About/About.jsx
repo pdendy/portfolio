@@ -1,33 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-import { images } from "../../constants";
+import { AppWrap } from "../../wrapper";
 import "./About.scss";
-
-const abouts = [
-  {
-    title: 'Front-End Developer',
-    description: 'I am a great front-end developer',
-    imgUrl: images.about01
-  },
-  {
-    title: 'Back-End Developer',
-    description: 'I am a good back-end developer',
-    imgUrl: images.about02
-  },
-  {
-    title: 'Full Stack Developer',
-    description: 'I am a good full stack developer',
-    imgUrl: images.about03
-  }, 
-  {
-    title: 'C# .Net Developer',
-    description: 'I am a C# developer',
-    imgUrl: images.about04
-  }
-]
+import { urlFor, sanityClient } from '../../client';
 
 const About = () => {
+
+  const [abouts, setAbouts] = useState([]);
+
+  useEffect(() => {
+    const query = '*[_type == "abouts"]';
+
+    sanityClient.fetch(query)
+    .then((data) => setAbouts(data))
+  }, []);
+  
   return (
     <>
       <h2 className="head-text"> I know that <span>Good Dev </span> <br/> means <span>Good Business</span>
@@ -52,4 +40,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AppWrap(About, 'about');
