@@ -1,9 +1,9 @@
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url';
 
-const client = require("@sanity/client");
+// const client = require("@sanity/client");
 
-export const sanityClient = createClient({
+const client = createClient({
     projectId: '5ludzxtr',
     dataset: 'production',
     apiVersion: '2023-08-04',
@@ -13,4 +13,5 @@ export const sanityClient = createClient({
 
 const builder = imageUrlBuilder(client);
 
+export const sanityClient = client;
 export const urlFor = (source) => builder.image(source);
